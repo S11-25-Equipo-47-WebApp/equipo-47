@@ -42,14 +42,13 @@ public class UserService implements IUserService {
     public RegisteredUserResponseDTO createUser(UserRegisterRequestDTO userDto) {
         validateUserUniqueness(userDto);
         User user = new User(userDto);
-        user.setRoles(roleUtil.getRolesFromEnum(userDto.roles()));
         assignDefaultRole(user);
 
         User userResponse = userRepository.save(user);
         String token = tokenService.generateToken(userResponse);
 
         // Delegar manejo de roles a sus handlers
-        for (RolesEnumUserRegister role : userDto.roles()) {
+        for (RolesEnumUserRegister role : List.of(RolesEnumUserRegister.OWNER)) {
             roleHandlers.stream()
                     .filter(handler -> handler.supports() == role)
                     .findFirst()
@@ -76,7 +75,7 @@ public class UserService implements IUserService {
 
     private void assignDefaultRole(User user) {
         Role role = roleRepository.findByName(RolesEnum.OWNER)
-                .orElseThrow(() -> new NotFoundException("Rol USER no encontrado"));
+                .orElseThrow(() -> new NotFoundException("Rol OWNER no encontrado"));
         user.getRoles().add(role);
     }
 }

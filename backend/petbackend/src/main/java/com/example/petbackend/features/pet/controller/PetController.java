@@ -3,6 +3,7 @@ package com.example.petbackend.features.pet.controller;
 import com.example.petbackend.features.pet.dto.PetDTO;
 import com.example.petbackend.features.pet.service.PetService;
 import com.example.petbackend.features.user.model.User;
+import io.swagger.v3.oas.annotations.security.SecurityRequirement;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
@@ -16,6 +17,8 @@ import java.util.List;
 @RestController
 @RequestMapping("/api/pets")
 @RequiredArgsConstructor
+@SecurityRequirement(name = "bearer-key")
+@PreAuthorize("hasAnyRole('OWNER')")
 public class PetController {
 
     private final PetService petService;
