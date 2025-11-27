@@ -1,10 +1,8 @@
 package com.example.petbackend.features.user.dto;
 
-import com.example.petbackend.features.user.model.RolesEnumUserRegister;
 import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.validation.constraints.*;
 
-import java.util.Set;
 
 @Schema(description = "Datos necesarios para crear un usuario")
 public record UserRegisterRequestDTO(
@@ -20,9 +18,6 @@ public record UserRegisterRequestDTO(
         @Schema(description = "Contraseña del usuario", example = "12345678A")
         @NotNull
         @Size(min = 8, message = "La contraseña debe tener como mínimo 8 caracteres")
-        String password,
-
-        @NotEmpty
-        Set<RolesEnumUserRegister> roles
+        String password
 ) {
 }
