@@ -2,10 +2,9 @@ import { Outlet } from 'react-router';
 
 const AuthLayout = () => {
   return (
-    <>
-      <h1>Auth</h1>
+    <main className='min-h-svh flex items-center justify-center p-6'>
       <Outlet />
-    </>
+    </main>
   );
 };
 
