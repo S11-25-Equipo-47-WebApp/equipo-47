@@ -62,7 +62,6 @@ Pet Health Tracker es un sistema web diseñado para gestionar de manera integral
 - Endpoint:
   - `GET /dashboard/:petId`
 
----
 
 ## Requerimientos previos
 
@@ -135,7 +134,7 @@ Arquitectura basada en paquetes funcionales, se organizan  las carpetas de acuer
 
       src
       └── main
-          ├── java/com/example/skilllinkbackend
+          ├── java/com/example/petbackend
           │   ├── config       
           │   |   ├── exceptions       -> Exception handling.
           |   |   ├── responses        -> Response format.
