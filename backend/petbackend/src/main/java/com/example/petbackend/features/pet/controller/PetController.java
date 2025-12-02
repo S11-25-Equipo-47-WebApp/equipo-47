@@ -15,7 +15,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping("/api/pets")
+@RequestMapping("/api/v1/pets")
 @RequiredArgsConstructor
 @SecurityRequirement(name = "bearer-key")
 @PreAuthorize("hasAnyRole('OWNER')")
